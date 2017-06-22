@@ -36,13 +36,16 @@
         android:id="@+id/percentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="right|center_vertical"
         android:text="@string/tip_percentage" />
 
     <SeekBar
         android:id="@+id/percentSeekBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/seekbar_height"
+        android:layout_gravity="fill_horizontal"
+        android:max="30"
+        android:progress="15" />
 
     <TextView
         android:id="@+id/tipLabelTextView"
@@ -55,7 +58,11 @@
         android:id="@+id/tipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="fill_horizontal"
+        android:background="@color/result_background"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding" />
 
     <TextView
         android:id="@+id/totalLabelTextView"
@@ -68,6 +75,10 @@
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="fill_horizontal"
+        android:background="@color/result_background"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding" />
 
 </GridLayout>
