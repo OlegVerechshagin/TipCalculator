@@ -54,15 +54,12 @@
         android:layout_gravity="right"
         android:text="@string/tip" />
 
+    <!-- мое свойство - атрибут style -->
     <TextView
         android:id="@+id/tipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/result_background"
-        android:elevation="@dimen/elevation"
-        android:gravity="center"
-        android:padding="@dimen/textview_padding" />
+        style="@style/styleTextView" />
 
     <TextView
         android:id="@+id/totalLabelTextView"
@@ -75,10 +72,6 @@
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/result_background"
-        android:elevation="@dimen/elevation"
-        android:gravity="center"
-        android:padding="@dimen/textview_padding" />
+        style="@style/styleTextView" />
 
 </GridLayout>
