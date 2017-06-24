@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/seekbar_height"
         android:layout_gravity="fill_horizontal"
+        android:contentDescription="@string/seek_bar_logo"
         android:max="30"
         android:progress="15" />
 
@@ -57,9 +58,10 @@
     <!-- мое свойство - атрибут style -->
     <TextView
         android:id="@+id/tipTextView"
+        style="@style/styleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/styleTextView" />
+        android:contentDescription="@string/tip_text_view_logo" />
 
     <TextView
         android:id="@+id/totalLabelTextView"
@@ -72,6 +74,7 @@
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/styleTextView" />
+        style="@style/styleTextView"
+        android:contentDescription="@string/total_text_view_logo"/>
 
 </GridLayout>

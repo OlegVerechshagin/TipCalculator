@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
-    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_amount">Enter Amount_test</string>
     <string name="tip_percentage">15%</string>
-    <string name="tip">Tip</string>
-    <string name="total">Total</string>
+    <string name="tip">Tip_test</string>
+    <string name="total">Total_test</string>
+    <string name="seek_bar_logo">Slider for entering percent of tips_test</string>
+    <string name="tip_text_view_logo">Displays the precentage of tips_test</string>
+    <string name="total_text_view_logo">Displaing the invoice amount_test</string>
 </resources>

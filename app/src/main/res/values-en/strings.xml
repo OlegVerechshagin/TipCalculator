@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="tip">Tip</string>
+    <string name="total">Total</string>
+    <string name="total_text_view_logo">Displaing the invoice amount</string>
+    <string name="tip_text_view_logo">Displays the precentage of tips</string>
+    <string name="seek_bar_logo">Slider for entering percent of tips</string>
+</resources>
