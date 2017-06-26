@@ -5,5 +5,5 @@
     <string name="tip">Чаевые</string>
     <string name="seek_bar_logo">Ползунок для ввода процента чаевых</string>
     <string name="total_text_view_logo">Отображение суммы счета</string>
-    <string name="tip_text_view_logo">Отображение процента чаевых</string>
+    <string name="tip_text_view_logo">Отображение суммы чаевых</string>
 </resources>
