@@ -10,7 +10,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener; // слушатель See
 import android.widget.SeekBar; // для изменения процента чаевых
 import android.widget.EditText; // Для ввода счета
 import android.widget.TextView; // для вывода текста
-
+import java.math.BigDecimal;
 import java.text.NumberFormat; // для форматирования денежных сумм
 
 // Класс MainActivity приложения Tip Calculator
@@ -22,9 +22,21 @@ public class MainActivity extends AppCompatActivity {
     private static final NumberFormat percentFormat =
             NumberFormat.getPercentInstance();
 
+    private BigDecimal billAmount = new BigDecimal(0.0); // сумма счета, введенная пользователем
+    private BigDecimal percent = new BigDecimal(0.15); // исходный процент чаевых
+    private TextView amountTextView; // для отформатированной суммы счета (вводимой)
+    private TextView percentTextView; // для вывода процента чаевых
+    private TextView tipTextView; // для вывода вычисленных чаевых
+    private TextView totalTextView; // для вычисленной общей суммы
+
+//    Вызывается при первом создании активности
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate(Bundle savedInstanceState) { // savedInstanceState - сохранить состояние экземпляра
+        super.onCreate(savedInstanceState); // вызов версии суперкласса
+        setContentView(R.layout.activity_main); // заполнение GUI
+//        Получение ссылок на компоненты TextView, с которыми
+//        MainActivity взаимодействует на программном уровне
+        amountTextView = (TextView) findViewById(R.id.amountTextView);
+        percentTextView = (TextView) findViewById(R.id.percentTextView);
     }
 }
