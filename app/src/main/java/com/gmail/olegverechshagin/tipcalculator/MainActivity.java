@@ -3,6 +3,7 @@
 package com.gmail.olegverechshagin.tipcalculator;
 
 import android.os.Bundle; // для хранения информации состояния
+import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity; // базовый класс
 import android.text.Editable; // для обработки событий EditText
 import android.text.TextWatcher; // слушатель EditText
@@ -53,4 +54,39 @@ public class MainActivity extends AppCompatActivity {
                 (SeekBar) findViewById(R.id.percentSeekBar);
         percentSeekBar.setOnSeekBarChangeListener(seekBarListener);
     }
+//    Вычисление и вывод чаевых и общей суммы
+    private void calculate() {
+//        Форматирование процентов и вывод в percentTextView
+        percentTextView.setText(percentFormat.format(percent));
+
+//        Вычисление чаевых и общей суммы
+        BigDecimal tip = billAmount.multiply(percent);
+        BigDecimal total = billAmount.add(percent);
+
+//        Вывод чаевых и общей суммы в формате денежной величины
+        tipTextView.setText(currencyFormat.format(tip));
+        totalTextView.setText(currencyFormat.format(total));
+    }
+
+//    Объект слушателя для событий изменения состояния SeekBar
+    private final OnSeekBarChangeListener seekBarListener =
+        new OnSeekBarChangeListener() {
+//            Обновление процента чаевых и возов calculate
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                percent = new BigDecimal(progress).divide(new BigDecimal(100.0)); // Назначение процента чаевых
+                calculate(); //  Вычисление и вывод чаевых и сумм
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        };
 }
