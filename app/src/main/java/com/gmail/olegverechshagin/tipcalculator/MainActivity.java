@@ -38,5 +38,19 @@ public class MainActivity extends AppCompatActivity {
 //        MainActivity взаимодействует на программном уровне
         amountTextView = (TextView) findViewById(R.id.amountTextView);
         percentTextView = (TextView) findViewById(R.id.percentTextView);
+        tipTextView = (TextView) findViewById(R.id.tipTextView);
+        totalTextView = (TextView) findViewById(R.id.totalTextView);
+        tipTextView.setText(currencyFormat.format(0));
+        totalTextView.setText(currencyFormat.format(0));
+
+//        Назначение слушателя TextWatcher для amountEditText
+        EditText amountEditText =
+                (EditText) findViewById(R.id.amountEditText);
+        amountEditText.addTextChangedListener(amountEditTextWatcher);
+
+//        Назначение слушателя OnSeekBarChangeListener для percentSeekBar
+        SeekBar percentSeekBar =
+                (SeekBar) findViewById(R.id.percentSeekBar);
+        percentSeekBar.setOnSeekBarChangeListener(seekBarListener);
     }
 }
