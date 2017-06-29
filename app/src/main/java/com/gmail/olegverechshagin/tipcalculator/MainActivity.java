@@ -11,15 +11,16 @@ import android.widget.SeekBar.OnSeekBarChangeListener; // слушатель See
 import android.widget.SeekBar; // для изменения процента чаевых
 import android.widget.EditText; // Для ввода счета
 import android.widget.TextView; // для вывода текста
+
 import java.math.BigDecimal;
 import java.text.NumberFormat; // для форматирования денежных сумм
 
 // Класс MainActivity приложения Tip Calculator
 public class MainActivity extends AppCompatActivity {
-//    TODO вставить локаль (вытащить), если не подтянет
+    //    TODO вставить локаль (вытащить), если не подтянет
 //    Форматировщики денежных сумм и процентов
     private static final NumberFormat currencyFormat =
-        NumberFormat.getCurrencyInstance();
+            NumberFormat.getCurrencyInstance();
     private static final NumberFormat percentFormat =
             NumberFormat.getPercentInstance();
 
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView percentTextView; // для вывода процента чаевых
     private TextView tipTextView; // для вывода вычисленных чаевых
     private TextView totalTextView; // для вычисленной общей суммы
+    private BigDecimal ONE_HUNDRED = new BigDecimal(100.0);
 
-//    Вызывается при первом создании активности
+    //    Вызывается при первом создании активности
     @Override
     protected void onCreate(Bundle savedInstanceState) { // savedInstanceState - сохранить состояние экземпляра
         super.onCreate(savedInstanceState); // вызов версии суперкласса
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 (SeekBar) findViewById(R.id.percentSeekBar);
         percentSeekBar.setOnSeekBarChangeListener(seekBarListener);
     }
-//    Вычисление и вывод чаевых и общей суммы
+
+    //    Вычисление и вывод чаевых и общей суммы
     private void calculate() {
 //        Форматирование процентов и вывод в percentTextView
         percentTextView.setText(percentFormat.format(percent));
@@ -68,25 +71,47 @@ public class MainActivity extends AppCompatActivity {
         totalTextView.setText(currencyFormat.format(total));
     }
 
-//    Объект слушателя для событий изменения состояния SeekBar
+    //    Объект слушателя для событий изменения состояния SeekBar
     private final OnSeekBarChangeListener seekBarListener =
-        new OnSeekBarChangeListener() {
-//            Обновление процента чаевых и возов calculate
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,
-                                          boolean fromUser) {
-                percent = new BigDecimal(progress).divide(new BigDecimal(100.0)); // Назначение процента чаевых
-                calculate(); //  Вычисление и вывод чаевых и сумм
+            new OnSeekBarChangeListener() {
+                //            Обновление процента чаевых и возов calculate
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress,
+                                              boolean fromUser) {
+                    percent = new BigDecimal(progress).divide(ONE_HUNDRED); // Назначение процента чаевых
+                    calculate(); //  Вычисление и вывод чаевых и сумм
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
+            };
+
+    //        Объект слушателя для событий изменения текста в EditText
+    private final TextWatcher amountEditTextWatcher = new TextWatcher() {
+        //    Вызывается при изменении пользователем величины счета
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count) {
+
+            try { // получить счет и вывести в форме денежной суммы
+                billAmount = new BigDecimal(s.toString()).divide(ONE_HUNDRED);
+                amountTextView.setText(currencyFormat.format(billAmount));
+            } catch (NumberFormatException e) { // если s пусто или не число
+                amountTextView.setText("");
+                billAmount = BigDecimal.valueOf(0.0);
             }
+            calculate(); // обновление полей с чаевыми и общей суммой
+        }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        };
+        @Override
+        public void afterTextChanged(Editable s) {}
+    };
 }
