@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="activity_name">Расчет счета с учетом чаевых</string>
     <string name="enter_amount">Введите сумму</string>
     <string name="total">Всего</string>
     <string name="tip">Чаевые</string>
