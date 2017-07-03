@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        Вычисление чаевых и общей суммы
         BigDecimal tip = billAmount.multiply(percent);
-        BigDecimal total = billAmount.add(percent);
+        BigDecimal total = billAmount.add(tip);
 
 //        Вывод чаевых и общей суммы в формате денежной величины
         tipTextView.setText(currencyFormat.format(tip));
